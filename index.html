@@ -1,2 +1,152 @@
-<h1>Hello!</h1>
-<p>This is my website hosted on GitHub.</p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawSwap - Futter tauschen, Umwelt schonen</title>
+    <meta name="description" content="PawSwap ist eine progressive Web App zur Vermittlung von Futterspenden und Tauschgeschäften für Tierbesitzer in der DACH-Region.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Farbpalette: Dreamy & Eco */
+            --bg-gradient-start: #f0fdf4; /* Sehr helles Mint */
+            --bg-gradient-end: #e6f2ff;   /* Sanftes Himmelblau */
+            --primary-green: #14532d;     /* Dunkles Waldgrün (Hoher Kontrast) */
+            --accent-green: #166534;
+            --soft-card: rgba(255, 255, 255, 0.85);
+            --text-main: #1a202c;         /* Fast Schwarz für Lesbarkeit */
+            --focus-ring: #2563eb;        /* Klares Blau für Fokus-Indikatoren */
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Grundeinstellungen */
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Barrierefreiheit: Fokus-Styles */
+        *:focus-visible {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--primary-green);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #374151;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Medien-Sektion (Video/Audio/Bild) */
+        .media-showcase {
+            background: var(--soft-card);
+            backdrop-filter: blur(10px); /* Glas-Effekt */
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.5);
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .media-showcase {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .media-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        img, video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Funktionen Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+            border-left: 5px solid var(--primary-green);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-green);
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 0;
+        }
+
+        /* Audio Player Styling */
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #4b5563;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Button */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5
