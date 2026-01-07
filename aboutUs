@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns & Marken - PawSwap</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Design System "Dreamy Eco" */
+        :root {
+            --bg-gradient-start: #f0fdf4;
+            --bg-gradient-end: #e6f2ff;
+            --primary-green: #14532d;
+            --soft-card: rgba(255, 255, 255, 0.9);
+            --text-main: #1a202c;
+            --focus-ring: #2563eb;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--soft-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        h1, h2 { font-family: 'Quicksand', sans-serif; color: var(--primary-green); }
+        h1 { border-bottom: 2px solid #e5e7eb; padding-bottom: 15px; }
+        
+        .back-link { color: var(--primary-green); text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .back-link:hover { text-decoration: underline; }
+
+        /* Styles für die Marken-Präsentation */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .brand-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .brand-card:hover { transform: translateY(-5px); border-color: var(--primary-green); }
+
+        .brand-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+        
+        .nizza-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+        .nizza-table th, .nizza-table td {
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        .nizza-table th { background-color: #f0fdf4; color: var(--primary-green); }
+
+        .team-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+
+        <h1>Über uns & Unsere Marke</h1>
+
+        <section>
+            <p class="intro">
+                Hinter PawSwap steht die <strong>AinuraPenzhebayeva GmbH</strong> aus Wien. 
+                Wir sind ein Team von 9 Personen (5 davon im Support!), mit einer gemeinsamen Mission: 
+                Wir wollen Futterverschwendung beenden und Tierbesitzer vernetzen.
+            </p>
+        </section>
+
+        <section style="margin-top: 50px;">
+            <h2>Unsere Markenidentität</h2>
+            <p>Um unsere Vision und Qualität rechtlich zu schützen und wiedererkennbar zu machen, haben wir folgende Markenformen definiert und angemeldet:</p>
+            
+            <div class="brand-grid">
+                
+                <div class="brand-card">
+                    <span class="brand-icon">🐾🔄</span>
+                    <h3>1. Wort-Bild-Marke</h3>
+                    <p><strong>"PawSwap Logo"</strong></p>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        Unser Hauptlogo: Der Schriftzug "PawSwap" in Dunkelgrün, wobei das "P" eine Pfote bildet, deren Ballen Tausch-Pfeile sind.
+                    </p>
+                </div>
+
+                <div class="brand-card">
+                    <span class="brand-icon">💬</span>
+                    <h3>2. Wortmarke (Claim)</h3>
+                    <p><strong>"Tauschen statt Verschwenden"</strong></p>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        Unser geschützter Werbeslogan, der unsere ökologische Mission ohne grafische Elemente rechtlich absichert.
+                    </p>
+                </div>
+
+                <div class="brand-card">
+                    <span class="brand-icon">🔊</span>
+                    <h3>3. Hörmarke</h3>
+                    <p><strong>"The Paw-Ping"</strong></p>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        Notenschrift: C-Dur Dreiklang aufsteigend, gefolgt von einem Sample "Woof". Dient als akustisches Signal bei einem erfolgreichen "Match".
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section style="margin-top: 50px;">
+            <h2>Rechtliche Einordnung (Nizza-Klassen)</h2>
+            <p>Unsere Marken sind für folgende Waren- und Dienstleistungsklassen gemäß dem Nizzaer Klassifikationssystem registriert:</p>
+            
+            <table class="nizza-table">
+                <tr>
+                    <th>Klasse</th>
+                    <th>Bereich</th>
+                    <th>Beschreibung für PawSwap</th>
+                </tr>
+                <tr>
+                    <td><strong>Klasse 9</strong></td>
+                    <td>Waren (App)</td>
+                    <td>Herunterladbare Softwareanwendungen für mobile Geräte; Applikationssoftware.</td>
+                </tr>
+                <tr>
+                    <td><strong>Klasse 35</strong></td>
+                    <td>Dienstleistung</td>
+                    <td>Online-Marktplatz für Käufer und Verkäufer von Waren; Vermittlung von Handelsgeschäften.</td>
+                </tr>
+                <tr>
+                    <td><strong>Klasse 42</strong></td>
+                    <td>IT-Services</td>
+                    <td>Software as a Service (SaaS); Hosting von Plattformen im Internet.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section style="margin-top: 40px; background: #fff1f2; padding: 20px; border-radius: 12px; border-left: 5px solid #9f1239;">
+            <h3 style="color: #9f1239; margin-top: 0;">Markenrechtliche Prüfung</h3>
+            <p style="font-size: 0.9rem;">
+                Vor der Festlegung unserer Markenidentität wurde eine Ähnlichkeitsrecherche über <strong>TMview</strong> und <strong>EUIPO eSearch</strong> durchgeführt.
+            </p>
+            <ul style="font-size: 0.9rem; margin-bottom: 0;">
+                <li><strong>Wortwahl:</strong> Der Begriff "PawSwap" ist im DACH-Raum für Klasse 9 unterscheidungskräftig und nicht rein beschreibend.</li>
+                <li><strong>Farbwahl:</strong> Die Farbkombination (Mint/Dunkelgrün) verletzt keine bestehenden Farbmarken großer Wettbewerber im Tierbereich.</li>
+                <li><strong>Bildwahl:</strong> Das Pfoten-Icon wurde individuell erstellt, um Verwechslungen mit bekannten Tierfutter-Logos zu vermeiden.</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
