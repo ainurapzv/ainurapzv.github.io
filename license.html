@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizenzen & Credits - PawSwap</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Design System "Dreamy Eco" */
+        :root {
+            --bg-gradient-start: #f0fdf4;
+            --bg-gradient-end: #e6f2ff;
+            --primary-green: #14532d;
+            --soft-card: rgba(255, 255, 255, 0.9);
+            --text-main: #1a202c;
+            --focus-ring: #2563eb;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        *:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--soft-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        h1, h2 { font-family: 'Quicksand', sans-serif; color: var(--primary-green); }
+        h1 { border-bottom: 2px solid #e5e7eb; padding-bottom: 15px; }
+        
+        .back-link { color: var(--primary-green); text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .back-link:hover { text-decoration: underline; }
+
+        .license-box {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-family: monospace;
+            background-color: #f9fafb;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+
+        <h1>Lizenzinformationen & Credits</h1>
+        <p>Diese Webseite verwendet Open-Source-Ressourcen und unterliegt folgenden Bestimmungen.</p>
+
+        <h2>Bildquellen</h2>
+        <ul>
+            <li>Hundebilder: Bereitgestellt von <strong>Unsplash</strong> (Lizenzfrei nutzbar).</li>
+            <li>Icons & Grafiken: Erstellt mit CSS und HTML Standards.</li>
+        </ul>
+
+        <h2>Schriftarten (Fonts)</h2>
+        <p>Wir verwenden Schriftarten von <strong>Google Fonts</strong> unter der Open Font License (OFL):</p>
+        <ul>
+            <li><strong>Nunito</strong> (Vernon Adams)</li>
+            <li><strong>Quicksand</strong> (Andrew Paglinawan)</li>
+        </ul>
+
+        <h2>Quellcode & Software</h2>
+        <p>Der Quellcode dieser Webseite (PawSwap PWA) ist geistiges Eigentum der <strong>AinuraPenzhebayeva GmbH</strong>.</p>
+        
+        <h3>Lizenztext (Beispiel MIT License für Teile des Codes)</h3>
+        <div class="license-box">
+            MIT License<br><br>
+            Copyright (c) 2024 AinuraPenzhebayeva GmbH<br><br>
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software...
+        </div>
+
+        <p><small>Alle anderen Marken sind Eigentum ihrer jeweiligen Inhaber.</small></p>
+    </div>
+
+</body>
+</html>
