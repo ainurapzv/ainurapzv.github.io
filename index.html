@@ -269,7 +269,7 @@
         </main>
 
         <footer>
-            <p>&copy; 2024 PawSwap - AinuraPenzhebayeva GmbH. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 PawSwap - AinuraPenzhebayeva GmbH. Alle Rechte vorbehalten.</p>
             <nav style="margin-top: 15px;">
             <a href="contact.html" style="color: #4b5563; margin: 0 10px;">Kontakt</a> |
             <a href="license.html" style="color: #4b5563; margin: 0 10px;">Lizenzen / Credits</a> |
@@ -280,6 +280,139 @@
     </nav>
         </footer>
     </div>
+    <style>
+        /* CSS für den Cookie Banner */
+        .cookie-overlay {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 1000; /* Muss über allem anderen liegen */
+            display: flex;
+            justify-content: center;
+            pointer-events: none; /* Klicks durchlassen, wenn unsichtbar */
+        }
+
+        .cookie-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid #bbf7d0;
+            border-left: 5px solid var(--primary-green);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            max-width: 600px;
+            pointer-events: auto; /* Box wieder klickbar machen */
+            
+            /* Animation beim Erscheinen */
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .cookie-title {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cookie-text {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-accept {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .btn-accept:hover { background-color: #166534; }
+
+        .btn-decline {
+            background-color: transparent;
+            color: #4b5563;
+            border: 2px solid #e5e7eb;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .btn-decline:hover { border-color: #9ca3af; color: #1f2937; }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+
+    <div id="cookie-banner" class="cookie-overlay hidden">
+        <div class="cookie-box" role="dialog" aria-modal="true" aria-labelledby="cookie-heading">
+            <div id="cookie-heading" class="cookie-title">
+                🍪 Wir nutzen Cookies
+            </div>
+            <p class="cookie-text">
+                PawSwap nutzt Cookies, um die Tausch-Funktionen (z. B. Inventar-Speicherung) zu ermöglichen und das Nutzererlebnis zu verbessern. 
+                Weitere Details findest du in unserer <a href="datenschutz.html" style="color: var(--primary-green);">Datenschutzerklärung</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="btn-accept">Alle akzeptieren</button>
+                <button onclick="rejectCookies()" class="btn-decline">Nur Notwendige</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logik für den Cookie Banner
+        
+        // 1. Prüfen, ob schon eine Entscheidung getroffen wurde
+        document.addEventListener("DOMContentLoaded", function() {
+            if (!localStorage.getItem("pawswap_cookie_consent")) {
+                // Wenn nichts im Speicher ist -> Banner zeigen
+                document.getElementById("cookie-banner").classList.remove("hidden");
+            }
+        });
+
+        // 2. Funktion für "Akzeptieren"
+        function acceptCookies() {
+            localStorage.setItem("pawswap_cookie_consent", "accepted");
+            closeBanner();
+            // Hier würde man normalerweise Google Analytics aktivieren
+            console.log("Cookies akzeptiert - Analyse gestartet");
+        }
+
+        // 3. Funktion für "Ablehnen"
+        function rejectCookies() {
+            localStorage.setItem("pawswap_cookie_consent", "rejected");
+            closeBanner();
+            console.log("Cookies abgelehnt - Nur technische Cookies aktiv");
+        }
+
+        // 4. Banner ausblenden
+        function closeBanner() {
+            document.getElementById("cookie-banner").classList.add("hidden");
+        }
+    </script>
+
 
 </body>
 </html>
