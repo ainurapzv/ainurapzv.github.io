@@ -134,6 +134,15 @@
                     </p>
                 </div>
 
+                <div class="brand-card">
+                    <span class="brand-icon">🐾</span>
+                    <h3>4. Bildmarke</h3>
+                    <p><strong>"Das Paw-Icon"</strong></p>
+                    <p style="font-size: 0.9rem; color: #666;">
+                    Unsere isolierte grafische Darstellung (Pfote mit Pfeilen) ohne Text. Dient als App-Icon und Favicon.
+                    </p>
+                </div>
+
             </div>
         </section>
 
