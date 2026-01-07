@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lizenzen & Credits - PawSwap</title>
+    <title>Lizenz & Nutzungsbedingungen - PawSwap</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Design System "Dreamy Eco" */
+        /* Design System "Dreamy Eco" - Identisch zur Startseite */
         :root {
             --bg-gradient-start: #f0fdf4;
             --bg-gradient-end: #e6f2ff;
@@ -19,6 +19,8 @@
             --text-main: #1a202c;
             --focus-ring: #2563eb;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --alert-bg: #fff1f2;
+            --alert-text: #9f1239;
         }
 
         body {
@@ -34,7 +36,7 @@
         *:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
             background: var(--soft-card);
             padding: 40px;
@@ -42,21 +44,50 @@
             box-shadow: var(--shadow);
         }
 
-        h1, h2 { font-family: 'Quicksand', sans-serif; color: var(--primary-green); }
-        h1 { border-bottom: 2px solid #e5e7eb; padding-bottom: 15px; }
+        h1 { 
+            font-family: 'Quicksand', sans-serif; 
+            color: var(--primary-green); 
+            border-bottom: 2px solid #e5e7eb; 
+            padding-bottom: 15px; 
+        }
         
-        .back-link { color: var(--primary-green); text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        h2 { 
+            font-family: 'Quicksand', sans-serif; 
+            color: var(--primary-green); 
+            margin-top: 35px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .back-link { 
+            color: var(--primary-green); 
+            text-decoration: none; 
+            font-weight: bold; 
+            display: inline-block; 
+            margin-bottom: 20px; 
+        }
         .back-link:hover { text-decoration: underline; }
 
-        .license-box {
+        /* Boxen für die verschiedenen Rechtsbereiche */
+        .legal-box {
             background: #fff;
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-family: monospace;
-            background-color: #f9fafb;
-            overflow-x: auto;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-green);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+
+        .warning-box {
+            background: var(--alert-bg);
+            border-left: 5px solid var(--alert-text);
+            color: var(--text-main);
+            padding: 20px;
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -65,33 +96,55 @@
     <div class="container">
         <a href="index.html" class="back-link">← Zurück zur Startseite</a>
 
-        <h1>Lizenzinformationen & Credits</h1>
-        <p>Diese Webseite verwendet Open-Source-Ressourcen und unterliegt folgenden Bestimmungen.</p>
+        <h1>Lizenzvereinbarung & Nutzungsbedingungen (EULA)</h1>
+        <p>Bitte lesen Sie diese Bedingungen sorgfältig durch. Mit der Nutzung von PawSwap stimmen Sie diesen Bedingungen zu.</p>
 
-        <h2>Bildquellen</h2>
-        <ul>
-            <li>Hundebilder: Bereitgestellt von <strong>Unsplash</strong> (Lizenzfrei nutzbar).</li>
-            <li>Icons & Grafiken: Erstellt mit CSS und HTML Standards.</li>
-        </ul>
+        <h2>1. Einräumung von Nutzungsrechten</h2>
+        <div class="legal-box">
+            <p>Die AinuraPenzhebayeva GmbH gewährt Ihnen ein <strong>nicht-exklusives, nicht übertragbares Recht</strong> zur Nutzung der Web-App PawSwap.</p>
+            
+            <h3>1.1 Basis-Nutzung (Kostenlos)</h3>
+            <p>Mit der Registrierung erwerben Sie das Recht, die Plattform für private Tauschgeschäfte zu nutzen, Profile zu erstellen und das Inventar-System zu verwenden.</p>
 
-        <h2>Schriftarten (Fonts)</h2>
-        <p>Wir verwenden Schriftarten von <strong>Google Fonts</strong> unter der Open Font License (OFL):</p>
-        <ul>
-            <li><strong>Nunito</strong> (Vernon Adams)</li>
-            <li><strong>Quicksand</strong> (Andrew Paglinawan)</li>
-        </ul>
-
-        <h2>Quellcode & Software</h2>
-        <p>Der Quellcode dieser Webseite (PawSwap PWA) ist geistiges Eigentum der <strong>AinuraPenzhebayeva GmbH</strong>.</p>
-        
-        <h3>Lizenztext (Beispiel MIT License für Teile des Codes)</h3>
-        <div class="license-box">
-            MIT License<br><br>
-            Copyright (c) 2024 AinuraPenzhebayeva GmbH<br><br>
-            Permission is hereby granted, free of charge, to any person obtaining a copy of this software...
+            <h3>1.2 Premium-Features (Kauf/Abo)</h3>
+            <p>Durch den Erwerb kostenpflichtiger Zusatzdienste (z. B. "Inserat hervorheben") erhalten Sie für den vereinbarten Zeitraum das Recht:</p>
+            <ul>
+                <li>Ihre Tauschangebote priorisiert in den Suchergebnissen anzeigen zu lassen.</li>
+                <li>Erweiterte Statistiken zu Ihrem Tauschverhalten einzusehen.</li>
+            </ul>
+            <p><em>Hinweis: Der Erwerb dieser Features überträgt kein Eigentum an der Software selbst.</em></p>
         </div>
 
-        <p><small>Alle anderen Marken sind Eigentum ihrer jeweiligen Inhaber.</small></p>
+        <h2>2. Rechte des Unternehmens (Geistiges Eigentum)</h2>
+        <div class="legal-box">
+            <p>Alle Rechte, die Ihnen nicht ausdrücklich eingeräumt wurden, verbleiben bei der AinuraPenzhebayeva GmbH.</p>
+            
+            <h3>2.1 Software und Design</h3>
+            <p>Der Quellcode, die Algorithmen (insbesondere das Matchmaking), das Design ("Look & Feel"), die Grafiken und der Name "PawSwap" sind geistiges Eigentum der AinuraPenzhebayeva GmbH und durch Urheberrechte geschützt.</p>
+
+            <h3>2.2 Nutzung von User-Inhalten</h3>
+            <p>Indem Sie Inhalte (z. B. Fotos von Futterdosen) hochladen, gewähren Sie uns das unentgeltliche Recht, diese Inhalte auf der Plattform darzustellen, um die Vermittlung zu ermöglichen.</p>
+        </div>
+
+        <h2>3. Haftungsbeschränkung & Gewährleistung</h2>
+        <div class="warning-box">
+            <h3 style="color: var(--alert-text); margin-top:0;">Wichtiger Haftungsausschluss</h3>
+            
+            <p><strong>3.1 Vermittlerstatus</strong><br>
+            PawSwap tritt ausschließlich als technischer Vermittler auf. Wir übernehmen <strong>keine Haftung für die Qualität, Sicherheit oder Haltbarkeit</strong> der zwischen den Nutzern getauschten Futtermittel. Tauschgeschäfte erfolgen auf eigenes Risiko der Nutzer.</p>
+
+            <p><strong>3.2 Software-Verfügbarkeit</strong><br>
+            Die Software wird "wie besehen" (as is) zur Verfügung gestellt. Wir garantieren keine 100%ige Verfügbarkeit der Server und haften nicht für Datenverlust, sofern dieser nicht durch grobe Fahrlässigkeit unsererseits verursacht wurde.</p>
+
+            <p><strong>3.3 Begrenzung der Haftungssumme</strong><br>
+            Bei leicht fahrlässigen Pflichtverletzungen beschränkt sich unsere Haftung auf den vorhersehbaren, vertragstypischen Schaden. Bei kostenlosen Diensten ist die Haftung auf Fälle von Vorsatz und grober Fahrlässigkeit beschränkt.</p>
+        </div>
+
+        <div style="margin-top: 40px; font-size: 0.8rem; color: #666; text-align: center;">
+            <p>Stand der AGB: Januar 2026<br>
+            AinuraPenzhebayeva GmbH, Wien</p>
+        </div>
+
     </div>
 
 </body>
