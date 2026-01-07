@@ -48,12 +48,60 @@
             padding: 20px;
         }
 
-        /* Header */
         header {
             text-align: center;
-            padding: 60px 20px;
+            /* Verlauf von deinem Hauptgrün zu einem noch dunkleren Ton */
+            background: linear-gradient(135deg, var(--primary-green), #064e3b);
+            
+            /* Viel Platz (Padding) damit es wichtig aussieht */
+            padding: 100px 20px 120px 20px;
+            
+            /* Eine schöne Kurve unten ("Dreamy"-Look) */
+            border-radius: 0 0 50% 50% / 0 0 40px 40px;
+            
+            /* Schatten für Tiefe */
+            box-shadow: 0 15px 30px rgba(20, 83, 45, 0.25);
+            margin-bottom: 60px;
+            color: white; /* Wichtig: Textfarbe auf Weiß setzen */
         }
 
+        /* Die Überschrift im Header (muss jetzt weiß sein) */
+        header h1 {
+            font-family: 'Quicksand', sans-serif;
+            color: white; /* Überschreibt das Grün von vorher */
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Leichter Schatten für Lesbarkeit */
+        }
+
+        /* Der Untertitel */
+        header .subtitle {
+            font-size: 1.3rem;
+            color: #dcfce7; /* Ein sehr helles Mintgrün (statt Grau) */
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        /* Der Button im Header (Invertiert: Weißer Button auf grünem Grund) */
+        header .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-green);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        header .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            background-color: #f0fdf4;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
         h1 {
             font-family: 'Quicksand', sans-serif;
             color: var(--primary-green);
@@ -258,12 +306,14 @@
 
             <section style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: var(--shadow);">
                 <h2 style="color: var(--primary-green);">Wer wir sind</h2>
-                <p><strong> Das Team </strong>Wir sind kein riesiger anonymer Konzern. Wir sind ein enges Team von 9 leidenschaftlichen Menschen, die jeden Tag daran arbeiten, die DACH-Region ein Stück grüner zu machen:</p>
+                <p><strong> Das Team: </strong>Wir sind kein riesiger anonymer Konzern. Wir sind ein enges Team von 9 leidenschaftlichen Menschen, die jeden Tag daran arbeiten, die DACH-Region ein Stück grüner zu machen:</p>
                 <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
                 
-                <p><strong>AinuraPenzhebayeva GmbH</strong><br>
-                Unsere Mission Hinter PawSwap steht die AinuraPenzhebayeva GmbH, ein junges Tech-Unternehmen aus dem Herzen von Wien. Unsere Vision begann mit einer einfachen Frage: Warum verstaubt teures Spezialfutter im Schrank, während </p>
-                es dem Hund in der Nachbarschaft schmecken würde? Wir glauben daran, dass Nachhaltigkeit und Tierliebe Hand in Hand gehen. PawSwap ist unsere Antwort auf Futterverschwendung und anonymes Nebeneinanderher-Leben in der Großstadt.</p>
+                <p><strong>Über die AinuraPenzhebayeva GmbH</strong><br>
+                Die AinuraPenzhebayeva GmbH ist ein in Wien ansässiges Softwareunternehmen, das sich auf nachhaltige Consumer-to-Consumer (C2C) Lösungen spezialisiert hat. Mit unserem Flaggschiff-Produkt PawSwap revolutionieren wir die Art und Weise, wie Tierfutter verwertet wird.<p>
+                Unser 9-köpfiges Team vereint technische Expertise mit starker Kundenorientierung. Mit einem überdurchschnittlich großen Support-Team (5 Mitarbeiter) garantieren wir, dass unsere Community immer einen Ansprechpartner hat, während unsere Entwickler und Marketing-Experten<p>
+                die Plattform stetig verbessern. Wir stehen für Umweltschutz, lokale Vernetzung und technologische Innovation.
+                
             </section>
 
         </main>
