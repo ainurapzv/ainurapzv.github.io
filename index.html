@@ -457,41 +457,163 @@
             object-fit: cover;
         }
 
-        /* ---- GALLERY STRIP ---- */
-        .gallery-strip {
-            padding: 100px 0;
-            overflow: hidden;
-        }
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            animation: marquee 30s linear infinite;
-            width: max-content;
-        }
-        .gallery-track:hover {
-            animation-play-state: paused;
-        }
-        .gallery-item {
-            width: 320px;
-            height: 420px;
-            flex-shrink: 0;
+        /* ---- 3D PERSPECTIVE GALLERY (unveil-style) ---- */
+        .gallery-section {
+            padding: 80px 0 120px;
             overflow: hidden;
             position: relative;
         }
-        .gallery-item img {
+        .gallery-section .section-label {
+            padding-left: 40px;
+        }
+        .gallery-perspective {
+            perspective: 1400px;
+            perspective-origin: 50% 45%;
+            width: 100%;
+            height: 90vh;
+            min-height: 650px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-track-3d {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+        }
+        .gallery-card {
+            position: absolute;
+            width: 420px;
+            height: 300px;
+            left: -210px;
+            top: -150px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.9s var(--transition-smooth), opacity 0.6s var(--transition-smooth);
+            will-change: transform;
+        }
+        /* Front face */
+        .gallery-card-face {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.18), 0 5px 25px rgba(0,0,0,0.1);
+        }
+        .gallery-card-face img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(40%);
-            transition: filter 0.6s, transform 0.8s var(--transition-smooth);
+            opacity: 0.82;
+            transition: opacity 0.5s var(--transition-smooth), transform 0.6s var(--transition-smooth);
         }
-        .gallery-item:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.04);
+        .gallery-card:hover .gallery-card-face img {
+            opacity: 0.95;
         }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+
+        /* Card edge / spine (gives 3D slab thickness) */
+        .gallery-card-edge {
+            position: absolute;
+            top: 0;
+            right: -7px;
+            width: 7px;
+            height: 100%;
+            background: linear-gradient(to right, #d8d6d0, #bbb8b0);
+            transform: rotateY(90deg);
+            transform-origin: left center;
+        }
+        .gallery-card-edge-bottom {
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            background: linear-gradient(to bottom, #c8c6c0, #b0ada5);
+            transform: rotateX(90deg);
+            transform-origin: top center;
+        }
+
+        /* Active/clicked card — slides toward viewer */
+        .gallery-card.active {
+            z-index: 100;
+        }
+        .gallery-card.active .gallery-card-face img {
+            opacity: 1;
+        }
+
+        /* Card info overlay */
+        .gallery-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.4s, transform 0.4s var(--transition-smooth);
+        }
+        .gallery-card:hover .gallery-card-info,
+        .gallery-card.active .gallery-card-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gallery-card-info-title {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #fff;
+        }
+        .gallery-card-info-tag {
+            font-family: var(--sans);
+            font-size: 0.6rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            margin-top: 3px;
+        }
+
+        /* Counter / index display */
+        .gallery-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            z-index: 10;
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+        .gallery-counter .current {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text);
+            display: block;
+            line-height: 1;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-card { width: 300px; height: 215px; left: -150px; top: -108px; }
+            .gallery-perspective { height: 70vh; min-height: 500px; }
+            .gallery-section .section-label { padding-left: 24px; }
+            .gallery-counter { left: 24px; bottom: 20px; }
+        }
+        @media (max-width: 600px) {
+            .gallery-card { width: 220px; height: 158px; left: -110px; top: -79px; }
+            .gallery-perspective { height: 60vh; min-height: 400px; }
+            .gallery-card-edge { width: 4px; right: -4px; }
+            .gallery-card-edge-bottom { height: 4px; bottom: -4px; }
         }
 
         /* ---- QUOTE ---- */
@@ -650,7 +772,6 @@
 
         @media (max-width: 600px) {
             .nav-links { display: none; }
-            .gallery-item { width: 240px; height: 320px; }
             .about-stats { flex-direction: column; gap: 24px; }
         }
     </style>
@@ -729,25 +850,107 @@
         </div>
     </section>
 
-    <!-- Infinite Gallery Strip -->
-    <div class="gallery-strip">
-        <div class="gallery-track" id="galleryTrack">
-            <!-- REPLACE: Use your own images. Images are duplicated for infinite scroll effect -->
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=75" alt="Gallery 1"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=600&q=75" alt="Gallery 2"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1496440737103-cd596325d314?w=600&q=75" alt="Gallery 3"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=75" alt="Gallery 4"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=75" alt="Gallery 5"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=75" alt="Gallery 6"></div>
-            <!-- Duplicates for seamless loop -->
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=75" alt="Gallery 1"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=600&q=75" alt="Gallery 2"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1496440737103-cd596325d314?w=600&q=75" alt="Gallery 3"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=75" alt="Gallery 4"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=75" alt="Gallery 5"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=75" alt="Gallery 6"></div>
+    <!-- 3D Perspective Gallery (unveil-style) -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-label reveal">Gallery</div>
+        <div class="gallery-perspective">
+            <div class="gallery-track-3d" id="galleryTrack3d">
+                <!-- REPLACE: Use your own images — all cards are same size -->
+                <div class="gallery-card" data-index="0">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700&q=80" alt="Editorial 1">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Editorial — Vogue</div>
+                            <div class="gallery-card-info-tag">Photography</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="1">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=700&q=80" alt="Behind the scenes">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Behind the Scenes</div>
+                            <div class="gallery-card-info-tag">On Set</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="2">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1496440737103-cd596325d314?w=700&q=80" alt="Portraits">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Portraits — Cannes</div>
+                            <div class="gallery-card-info-tag">2024</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="3">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=700&q=80" alt="The Glass Hours">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">The Glass Hours</div>
+                            <div class="gallery-card-info-tag">National Theatre</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="4">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&q=80" alt="Press">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Press — BAFTA Season</div>
+                            <div class="gallery-card-info-tag">Editorial</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="5">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=700&q=80" alt="Film Still">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Between Silences</div>
+                            <div class="gallery-card-info-tag">Film Still</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="6">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&q=80" alt="Campaign">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Campaign — Dior</div>
+                            <div class="gallery-card-info-tag">Fashion</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+                <div class="gallery-card" data-index="7">
+                    <div class="gallery-card-face">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=80" alt="Studio">
+                        <div class="gallery-card-info">
+                            <div class="gallery-card-info-title">Studio Session</div>
+                            <div class="gallery-card-info-tag">Portrait</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-edge"></div>
+                    <div class="gallery-card-edge-bottom"></div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="gallery-counter">
+            <span class="current" id="galleryIndex">01</span>
+            / 08
+        </div>
+    </section>
 
     <!-- Portfolio / Filmography -->
     <section class="portfolio" id="portfolio">
@@ -874,7 +1077,7 @@
         }
         animateCursor();
 
-        document.querySelectorAll('a, [data-hover], .portfolio-item, .gallery-item').forEach(el => {
+        document.querySelectorAll('a, [data-hover], .portfolio-item, .gallery-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
         });
@@ -890,6 +1093,84 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal, .about-image-wrapper').forEach(el => observer.observe(el));
+
+        // ---- 3D PERSPECTIVE GALLERY ----
+        const galleryCards = document.querySelectorAll('.gallery-card');
+        const galleryIndexEl = document.getElementById('galleryIndex');
+        const totalCards = galleryCards.length;
+        let activeCard = null;
+
+        // Store base transforms for each card
+        const baseTransforms = [];
+
+        function positionCards() {
+            const isMobile = window.innerWidth <= 600;
+            const isTablet = window.innerWidth <= 900;
+            // Tighter horizontal spacing, gentle vertical for diagonal cascade
+            const spacingX = isMobile ? 60 : isTablet ? 90 : 120;
+            const spacingY = isMobile ? -40 : isTablet ? -55 : -68;
+            const cardRotateY = -50;
+            const cardRotateX = 12;
+            // Center the whole stack
+            const centerX = (totalCards - 1) * spacingX / 2;
+            const centerY = (totalCards - 1) * Math.abs(spacingY) / 2;
+
+            galleryCards.forEach((card, i) => {
+                const x = i * spacingX - centerX;
+                const y = i * spacingY + centerY;
+                const z = -i * 10;
+                const base = {x, y, z, ry: cardRotateY, rx: cardRotateX};
+                baseTransforms[i] = base;
+                const t = `translateX(${x}px) translateY(${y}px) translateZ(${z}px) rotateY(${cardRotateY}deg) rotateX(${cardRotateX}deg)`;
+                card.style.transform = t;
+                // Stagger entrance
+                card.style.opacity = '0';
+                setTimeout(() => { card.style.opacity = '1'; }, 300 + i * 70);
+            });
+        }
+
+        function applyTransform(card, i, active) {
+            const b = baseTransforms[i];
+            if (!b) return;
+            if (active) {
+                // Slide forward toward viewer: move left, forward in Z, and reduce Y rotation
+                const t = `translateX(${b.x - 100}px) translateY(${b.y}px) translateZ(${b.z + 180}px) rotateY(${b.ry + 15}deg) rotateX(${b.rx - 3}deg)`;
+                card.style.transform = t;
+            } else {
+                const t = `translateX(${b.x}px) translateY(${b.y}px) translateZ(${b.z}px) rotateY(${b.ry}deg) rotateX(${b.rx}deg)`;
+                card.style.transform = t;
+            }
+        }
+
+        // Click to slide card out toward viewer
+        galleryCards.forEach((card, i) => {
+            card.addEventListener('click', () => {
+                if (activeCard === card) {
+                    card.classList.remove('active');
+                    applyTransform(card, i, false);
+                    activeCard = null;
+                    galleryIndexEl.textContent = '—';
+                } else {
+                    if (activeCard) {
+                        const prevIdx = parseInt(activeCard.dataset.index);
+                        activeCard.classList.remove('active');
+                        applyTransform(activeCard, prevIdx, false);
+                    }
+                    card.classList.add('active');
+                    applyTransform(card, i, true);
+                    activeCard = card;
+                    galleryIndexEl.textContent = String(i + 1).padStart(2, '0');
+                }
+            });
+        });
+
+        positionCards();
+        window.addEventListener('resize', () => {
+            activeCard = null;
+            document.querySelectorAll('.gallery-card.active').forEach(c => c.classList.remove('active'));
+            galleryIndexEl.textContent = '—';
+            positionCards();
+        });
 
         // ---- PORTFOLIO FLOATING IMAGE ----
         const floatingImg = document.getElementById('floatingImg');
